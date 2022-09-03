@@ -1,0 +1,17 @@
+{{#block "content"}}
+    <div style="text-align: center; margin-top: 5rem">
+         {{#if username}}
+             <h1>Welcome {{ username }}! you are in home page.</h1>
+             <a href="/ideas">Wanna add course idea!</a>
+         {{else}}
+             <h1>Welcome Student</h1>
+             <form action="/sign-in" method="post">
+                 <input type="text" placeholder="Type your name " name="username" style="padding: 1rem" >
+                 <br> <br>
+                 <button>Sign in</button>
+             </form>
+         {{/if}}
+    </div>
+ {{/block}}
+
+{{> base.hbs}}

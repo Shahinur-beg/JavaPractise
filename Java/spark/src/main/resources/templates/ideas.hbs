@@ -1,0 +1,24 @@
+
+{{#block "content"}}
+    <div style="text-align: center; margin-top: 5rem">
+        <h1>Current Ideas</h1>
+        <div style="width: 20%; margin: auto">
+            <ul>
+                {{#each ideas}}
+                    <li>
+                        <form action="/ideas/{{slug}}/vote" method="post">
+                            {{title}} ( {{voteCount}} votes )
+                            <button>Votes</button>
+                        </form>
+                    </li>
+                {{/each}}
+            </ul>
+        </div>
+
+        <form action="/ideas" method="post">
+            <input type="text" placeholder="Whats your idea?" name="title" style="height: 2rem">
+            <button>Suggest!</button>
+        </form>
+    </div>
+{{/block}}
+{{> base.hbs}}
