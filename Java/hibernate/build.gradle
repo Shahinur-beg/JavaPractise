@@ -1,0 +1,31 @@
+plugins {
+    id 'java'
+}
+
+group 'com.hibernatePractice'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.0'
+    implementation 'org.hibernate:hibernate-core:6.1.2.Final'
+    implementation 'javax.transaction:jta:1.1'
+    implementation 'com.h2database:h2:2.1.214'
+}
+jar {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    manifest {
+        attributes "Main-Class": "com.gradle.Main"
+    }
+
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+test {
+    useJUnitPlatform()
+}
